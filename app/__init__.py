@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
+from config import config_options
 
 
 
@@ -10,7 +11,7 @@ def create_app(configname):
     """"
     method to initialize app
     """
-    
+    app.config.from_object(config_options[configname])
     
     
     

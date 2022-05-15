@@ -11,20 +11,20 @@ class DevConfig(Config):
     Development Configurations
     '''
     SECRET_KEY="secret123"
-    #SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://moringa:paswaad@localhost/blogsite"
+    #SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://moringa:pass123@localhost/blogsite"
     DEBUG = True
 class ProdConfig(Config):
     '''
     Production Configurations
     '''
     SECRET_KEY ="secret123"
-    #SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://moringa:paswaad@localhost/blogsite"
+    #SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://moringa:pass123@localhost/blogsite"
     DEBUG = False
 
 
 class TestConfig(Config):
     TESTING = True
-    #SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://moringa:paswaad@localhost/blogsite"
+    #SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://moringa:pass123@localhost/blogsite"
 
 
 config_options = {

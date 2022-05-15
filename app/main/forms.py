@@ -2,6 +2,7 @@ from wtforms import TextAreaField,StringField,SubmitField
 from . import main
 from wtforms.validators import DataRequired
 from flask_wtf import FlaskForm
+from ..models import Comment,Article
 
 class UploadBlogForm(FlaskForm):
     article = TextAreaField('Article',validators=[DataRequired()])

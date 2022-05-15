@@ -1,9 +1,9 @@
 from flask_login import login_required
 from . import main
-from flask import redirect,render_template,url_for
+from flask import redirect,render_template,url_for,abort,request
 from .forms import UploadBlogForm,CommentsForm,UpdateProfile
-
-
+from ..models import Article,Comment,User,  Quotes
+from .. import db
 
 @main.route('/')
 def index():
@@ -38,3 +38,16 @@ def comment(article_id):
 
     title = 'Article Discussion'
     return render_template('blogdiscussion.html',title = title,article = article,comments=comments)
+
+
+@main.route('/profile/<username>')
+@login_required
+def profile(username):
+    user = User.query.filter_by(username = username).first()
+    userid = user.id
+    my_articles = Article.query.filter_by(user_id = userid).all()
+
+    if user is None:
+        abort(404)
+
+    return render_template('profile/profile.html',user = user,my_articles = my_articles)

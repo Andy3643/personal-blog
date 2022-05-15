@@ -1,11 +1,16 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
 from config import config_options
+from flask_login import LoginManager
+from flask_sqlalchemy import SQLAlchemy
 
 
 
 app = Flask(__name__)
 bootstrap = Bootstrap()
+db = SQLALchemy()
+login_manager = LoginManager()
+photos = UploadSet('photos',IMAGES)
 
 def create_app(configname):
     """"
@@ -17,7 +22,9 @@ def create_app(configname):
     
     
     #initialize imports
+    db.init_app(app)
     bootstrap.init_app(app)
+    login_manager.init_app(app)
     
     
     #registering blueprints

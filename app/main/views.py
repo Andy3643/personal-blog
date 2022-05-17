@@ -1,13 +1,14 @@
-from flask_login import login_required
+from flask_login import login_required,current_user,login_user,logout_user
 from . import main
 from flask import redirect,render_template,url_for,abort,request
 from .forms import UploadBlogForm,CommentsForm,UpdateProfile
-from ..models import Article,Comment,User,  Quotes
+from ..models import Article,Comment,User
 from .. import db
 
 @main.route('/')
 def index():
-    return render_template('index.html')
+    articles = Article.get_article()
+    return render_template('index.html',articles=articles)
 
 
 @main.route('/addblog',methods = ['GET','POST'])

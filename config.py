@@ -4,14 +4,14 @@ class Config:
     General  app configuration settings
     '''
     UPLOADED_PHOTOS_DEST ='app/static/photos'
-    QUOTES_URL = 'http://quotes.stormconsultancy.co.uk/random.json'
-
+    # QUOTES_URL = 'http://quotes.stormconsultancy.co.uk/random.json'
+    SECRET_KEY="secret123"
+    SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://moringa:pass123@localhost/blogsite"
 class DevConfig(Config):
     '''
     Development Configurations
     '''
-    SECRET_KEY="secret123"
-    SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://moringa:pass123@localhost/blogsite"
+    
     DEBUG = True
 class ProdConfig(Config):
     '''

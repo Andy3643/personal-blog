@@ -1,7 +1,15 @@
-from . import db,login_manager
+
+from app import db,login_manager
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 
+# try:
+#     from app import app as app
+# except ImportError:
+#     from __main__ import app
+
+
+#db = SQLAlchemy()
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -46,7 +54,7 @@ class User(UserMixin,db.Model):
 
 class Article(db.Model):
     '''
-    This class will contain the database schema for articles table
+    This class will contain the database for articles table
     '''
     __tablename__ = 'articles'
 
@@ -80,12 +88,12 @@ class Comment(db.Model):
         comments = Comment.query.filter_by(article_id=article_id).all()
         return comments
 
-class Quotes:
-    def __init__(self,author,quote):
-        '''
-        Method to instanciate the quotes class
-        '''
-        self.author = author
-        self.quote = quote
+# class Quotes:
+#     def __init__(self,author,quote):
+#         '''
+#         Method to instanciate the quotes class
+#         '''
+#         self.author = author
+#         self.quote = quote
 
     
